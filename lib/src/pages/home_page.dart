@@ -1,8 +1,10 @@
+import 'package:componentes_2/src/providers/menu_provider.dart';
+import 'package:componentes_2/src/utils/icon_strings.dart';
 import 'package:flutter/material.dart';
 
 class HomePage  extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  static const opciones =  ['uno', 'Dos', 'Tres', 'Cuatro', 'Cinco'];
 
   @override
   Widget build(BuildContext context) {
@@ -10,31 +12,45 @@ class HomePage  extends StatelessWidget {
       appBar: AppBar(
         title: Text('Componentes'),
       ),
-      body: ListView( children:   _crearItems()  )  );
+      body: _lista(context),
+    );
   }
 
-  // Primera Forma
-  // List<Widget> _crearItems() {
-  //     List<Widget> lista = [];
-  //
-  //     for( String op in opciones){
-  //       final temp = ListTile(
-  //         title: Text(op),
-  //       );
-  //       lista.add(temp);
-  //       lista.add(Divider());
-  //     }
-  //
-  //
-  //   return lista;
-  // }
+
   /// 2 forma de hacer un list
-  List<Widget> _crearItems() {
-    var widgets = opciones.map((String o) {
-      return ListTile(
-        title: Text(o),
-      );
-    }).toList();
-      return widgets;
-  }
+ Widget _lista(BuildContext context) {
+    return FutureBuilder(
+ future:  menuProvider.cargarDatos(),
+
+  initialData: [],
+   builder: ( context,AsyncSnapshot<List> snapshot){
+   return ListView(
+     children:  _listaItems( snapshot.data , context),
+   );
+   }
+    );
+ }
+
+ List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
+    final List<Widget> opciones = [];
+
+    if( data != null){
+
+      data.forEach((element) {
+        final widgetTemp = ListTile(
+          title: Text(element['texto']),
+          leading: getIcono(element['icon']),
+          trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: (){
+            Navigator.pushNamed(context, element['ruta']);
+          },
+        );
+        opciones..add(widgetTemp)
+                ..add( Divider());
+      });
+
+
+    }
+  return opciones;
+ }
 }

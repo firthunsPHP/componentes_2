@@ -30,6 +30,16 @@
       "ruta" : "list",
       "icon" : "list",
       "texto": "Listas y Scroll"
+    },
+    {
+      "ruta" : "modals",
+      "icon" : "modal",
+      "texto": "Modales"
+    },
+    {
+      "ruta" : "pasar",
+      "icon" : "pasar",
+      "texto": "Pasar datos entre vistas"
     }
   ]
 }

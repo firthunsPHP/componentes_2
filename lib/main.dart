@@ -3,6 +3,8 @@ import 'package:componentes_2/src/pages/avatar_page.dart';
 import 'package:componentes_2/src/pages/card_page.dart';
 import 'package:componentes_2/src/pages/home_page.dart';
 import 'package:componentes_2/src/pages/input_page.dart';
+import 'package:componentes_2/src/pages/modal_page.dart';
+import 'package:componentes_2/src/pages/pasar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -28,16 +30,16 @@ class MyApp extends StatelessWidget {
         'alert': (BuildContext context) => AlertPage(),
         'avatar': (BuildContext context) => AvatarPage(),
         'card': (BuildContext context) => CardPage(),
-        'inputs': (BuildContext context) => InputPage()
+        'inputs': (BuildContext context) => InputPage(),
+        'modals': (BuildContext context) => ModalPage(),
+      'pasar': (BuildContext context) => ScreenPage(),
       },
       // captura el nombre de la ruta y si no esta definido ,
       onGenerateRoute: ( RouteSettings settings ){
 
-        print( 'Ruta llamda: ${ settings.name }' );
+        // print( 'Ruta llamda: ${ settings.name }' );
 
-        return MaterialPageRoute(
-            builder: ( BuildContext context ) => AlertPage()
-        );
+        return MaterialPageRoute( builder: ( BuildContext context ) => AlertPage()       );
 
 
       },

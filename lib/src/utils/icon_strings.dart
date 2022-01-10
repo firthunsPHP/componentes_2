@@ -7,8 +7,13 @@ final _icons = <String, IconData>{
   'input'         : Icons.input,
   'modal'         : Icons.ad_units_outlined,
   'pasar'         : Icons.account_tree,
+  'form'         : Icons.accessible_forward_rounded,
+  'http'         : Icons.https_sharp,
 
 };
 Icon getIcono( String nombreIcono ) {
-  return Icon(_icons[nombreIcono], color: Colors.blue);
+  return Icon(
+      _icons[nombreIcono],
+      color: Colors.blue
+  );
 }
